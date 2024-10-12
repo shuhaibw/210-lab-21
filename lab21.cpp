@@ -51,7 +51,8 @@ class Goat
         // print goat objects
         void print_goat() const
         {
-            cout << "    " << name << " (" << color << ", " << age << ")" << endl;
+            cout << "    " << name << " (" << color 
+            << ", " << age << ")" << endl;
         }
 };
 
@@ -256,21 +257,21 @@ int main()
     srand(static_cast<unsigned>(time(0)));
 
     DoublyLinkedList list;
-    int random = ;
+    // get random int between 5-20
+    int random = rand() % (MAX-MIN_LS+1) + MIN_LS;
 
-    for (int i = 0; i < size; ++i) 
+    // add 5-20 goat objects to the list
+    for (int i = 0; i < random; ++i) 
     {
-        list.push_back(rand() % (MAX_NR - MIN_NR + 1) + MIN_NR);
+        list.push_back(Goat());
     }
 
     cout << "Forward: " << endl;
     list.print();
-    cout << endl;
 
     cout << "Backward: " << endl;
     list.print_reverse();
-    cout << endl;
-
+   
     return 0;
 }
 
