@@ -58,13 +58,14 @@ class DoublyLinkedList
 private:
     struct Node 
     {
-        int data;
+        Goat obj;
         Node* prev;
         Node* next;
 
-        Node(int val, Node* p = nullptr, Node* n = nullptr) 
+        Node(const Goat& g, Node* p = nullptr, Node* n = nullptr) 
         {
-            data = val;
+            // assign given value to goat obj 
+            obj = g;
             prev = p;
             next = n;
         }
@@ -81,9 +82,9 @@ public:
         tail = nullptr; 
     }
 
-    void push_back(int value) 
+    void push_back(const Goat& obj) 
     {
-        Node* newNode = new Node(value);
+        Node* newNode = new Node(obj);
         if (!tail) // if there's no tail, the list is empty
         {
             head = tail = newNode;
@@ -96,9 +97,9 @@ public:
         }
     }
 
-    void push_front(int value) 
+    void push_front(const Goat& obj) 
     {
-        Node* newNode = new Node(value);
+        Node* newNode = new Node(obj);
         if (!head) // if there's no head, the list is empty
         {
             head = tail = newNode;
@@ -111,7 +112,7 @@ public:
         }
     }
 
-    void insert_after(int value, int position) 
+    void insert_after(const Goat& obj, int position) 
     {
         if (position < 0) 
         {
@@ -119,7 +120,7 @@ public:
             return;
         }
 
-        Node* newNode = new Node(value);
+        Node* newNode = new Node(obj);
         if (!head) 
         {
             head = tail = newNode;
@@ -154,7 +155,7 @@ public:
         temp->next = newNode;
     }
 
-    void delete_node(int value) 
+    void delete_node(const Goat& g) 
     {
         if (!head) 
         {
@@ -162,8 +163,16 @@ public:
         }
 
         Node* temp = head;
-        while (temp && temp->data != value) 
+        while (temp) 
         {
+            // check if we find the node
+            if(temp->obj.getAge() == g.getAge()
+            && temp->obj.getName() == temp->obj.getName() 
+            && g.getColor() == g.getColor())
+                {
+                    break;
+                }
+            // otherwise continue 
             temp = temp->next;
         }
 
