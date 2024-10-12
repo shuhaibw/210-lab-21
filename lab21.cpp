@@ -2,9 +2,56 @@
 // IDE used: VS Code
 
 #include <iostream>
+#include <string>
+
 using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
+
+class Goat
+{
+    private:
+        int age;
+        string name;
+        string color;
+        string names[SIZE] = {"Billy", "Nibbles", "Daisy", "Ginger", "Luna", 
+                              "Misty", "Oliver", "Pepper", "Clover", "Sunny", 
+                              "Mabel", "Willow", "Hazel", "Ruby", "Ziggy"};
+        string colors[SIZE] = {"White", "Brown", "Black", "Gray", "Spotted", 
+                               "Golden", "Cream", "Chocolate", "Rust", "Tan", 
+                               "Piebald", "Sable", "Fawn", "Slate", "Dappled"};
+
+    public:
+        // default constructor
+        Goat() 
+        {
+            // assign random age from 1-20
+            age = rand() % MAX + 1;
+            // assign random name
+            name = names[rand() % SIZE];
+            // assign random color
+            color = colors[rand() % SIZE];
+        }
+
+        // parameter constructor
+        Goat(int a, string n, string c) 
+        {
+            age = a;
+            name = n;
+            color = c;
+        }
+
+        // getters
+        int getAge() const {return age;}
+        string getName() const {return name;}
+        string getColor() const {return color;}
+
+        // print goat objects
+        void print_goat() const
+        {
+            cout << "    " << name << " (" << color << ", " << age << ")" << endl;
+        }
+};
 
 class DoublyLinkedList 
 {
