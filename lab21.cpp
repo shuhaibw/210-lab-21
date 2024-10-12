@@ -3,10 +3,12 @@
 
 #include <iostream>
 #include <string>
+#include <ctime>
+#include <cstdlib>
 
 using namespace std;
 
-const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
+const int MIN_LS = 5, MAX = 20, SIZE = 15;
 
 class Goat
 {
@@ -212,7 +214,8 @@ public:
 
         while (current) 
         {
-            cout << current->data << " ";
+            // call the print goat member function 
+            current->obj.print_goat();
             current = current->next;
         }
         cout << endl;
@@ -228,7 +231,8 @@ public:
 
         while (current) 
         {
-            cout << current->data << " ";
+            // call the print goat member function 
+            current->obj.print_goat();
             current = current->prev;
         }
         cout << endl;
@@ -248,22 +252,24 @@ public:
 // Driver program
 int main() 
 {
+    // seed random num generator
+    srand(static_cast<unsigned>(time(0)));
+
     DoublyLinkedList list;
-    int size = rand() % (MAX_LS - MIN_LS + 1) + MIN_LS;
+    int random = ;
 
     for (int i = 0; i < size; ++i) 
     {
         list.push_back(rand() % (MAX_NR - MIN_NR + 1) + MIN_NR);
     }
 
-    cout << "List forward: ";
+    cout << "Forward: " << endl;
     list.print();
-    cout << "List backward: ";
+    cout << endl;
+
+    cout << "Backward: " << endl;
     list.print_reverse();
-    cout << "Deleting list, then trying to print.\n";
-    list.~DoublyLinkedList();
-    cout << "List forward: ";
-    list.print();
+    cout << endl;
 
     return 0;
 }
